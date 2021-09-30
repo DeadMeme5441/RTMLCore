@@ -56,7 +56,7 @@ class document:
             opening_tags_list = re.findall("(\<[^\/].*?\>)", self.file_data)  # type: ignore
 
         all_opening_tags_obj_list = list(
-            map(self.generate_tag_object, opening_tags_list)
+            map(self._generate_tag_object, opening_tags_list)
         )
         opening_tags_name_list = list(
             set(
@@ -89,7 +89,7 @@ class document:
             closing_tags_list = re.findall("(\<[\/].*?\>)", self.file_data)  # type: ignore
 
         all_closing_tags_obj_list = list(
-            map(self.generate_tag_object, closing_tags_list)
+            map(self._generate_tag_object, closing_tags_list)
         )
         closing_tags_name_list = list(
             set(
@@ -137,7 +137,7 @@ class document:
             )[0].subtags_list
 
             final_subtags_list = list(
-                self.update_subtags_locations(opening_subtags, closing_subtags)
+                self._update_subtags_locations(opening_subtags, closing_subtags)
             )
 
             all_tags.append(
@@ -155,7 +155,7 @@ class document:
                     filter(lambda x: x.tag_name == this_tag_name, self.closing_tags)
                 )[0].subtags_list
 
-            final_subtags_list = list(self.update_subtags_locations(subtags, subtags))
+            final_subtags_list = list(self._update_subtags_locations(subtags, subtags))
 
             all_tags.append(
                 tag(tag_name=this_tag_name, subtags_list=final_subtags_list)
@@ -168,17 +168,17 @@ class document:
 
         error_dict = {"value": False, "tag_errors": [], "subtag_errors": []}
 
-        if self.tag_errors() != []:
+        if self._tag_errors() != []:
             error_dict["value"] = True
-            error_dict["tag_errors"] = self.tag_errors()
+            error_dict["tag_errors"] = self._tag_errors()
 
-        if self.subtag_errors() != []:
+        if self._subtag_errors() != []:
             error_dict["value"] = True
-            error_dict["subtag_errors"] = self.subtag_errors()
+            error_dict["subtag_errors"] = self._subtag_errors()
 
         return error_dict
 
-    def tag_errors(self):
+    def _tag_errors(self):
 
         error_list = []
 
@@ -206,7 +206,7 @@ class document:
 
             return error_list
 
-    def subtag_errors(self):
+    def _subtag_errors(self):
 
         error_list = []
 
@@ -229,7 +229,7 @@ class document:
 
         return error_list
 
-    def generate_tag_object(self, tag_item):
+    def _generate_tag_object(self, tag_item):
 
         tag_item_name = tag_item.split(";")[0].replace("<", "").strip()
         subtag_list = tag_item.split(";")[1:]
@@ -262,7 +262,7 @@ class document:
 
         return tag(tag_name=tag_item_name, subtags_list=subtag_obj_list)
 
-    def update_subtags_locations(self, opening_subtags_list, closing_subtags_list):
+    def _update_subtags_locations(self, opening_subtags_list, closing_subtags_list):
 
         final_subtags_list = []
 
