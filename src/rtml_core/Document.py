@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 
 
-from os import error
 import re
-from .subtag import subtag
-from .tag import tag
+from .Subtag import subtag
+from .Tag import tag
 
 
 class document:
