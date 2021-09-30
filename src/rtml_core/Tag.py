@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from . import subtag
+from . import Subtag
 
 
 class tag:

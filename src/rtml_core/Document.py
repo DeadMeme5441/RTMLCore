@@ -287,3 +287,74 @@ class document:
                 final_subtags_list.append(subtag_end_item)
 
         return final_subtags_list
+
+    def _search_text(self, this_search_term):
+
+        matches = re.finditer(this_search_term, self.file_data)  # type: ignore
+        matches_positions = [match.start() for match in matches]
+
+        return matches_positions
+
+    def _search_tag(self, this_search_term):
+
+        results_list = []
+
+        for tag in self.tags_list:
+            if tag.tag_name == this_search_term:
+                results_list.append(tag.asdict)
+
+        return results_list
+
+    def _search_subtag(self, this_search_term):
+
+        results_list = []
+
+        for tag in self.tags_list:
+            temp_dict = {"tag_name": tag.tag_name, "subtag_list": []}
+            for subtag in tag.subtags_list:
+                if (
+                    this_search_term == subtag.subtag_name
+                    or this_search_term == subtag.subtag_value
+                ):
+                    temp_dict["subtag_list"].append(tag.asdict)
+
+            if len(temp_dict["subtag_list"]) != 0:
+                results_list.append(temp_dict)
+
+        return results_list
+
+    def search_document(self, search_type, search_term):
+
+        search_result = {
+            "search_type": search_type,
+            "search_term": search_term,
+            "value": False,
+            "results": [
+                {"Text_Results": []},
+                {"Tag_Results": []},
+                {"Subtag_Results": []},
+            ],
+        }
+
+        if "text" in search_type:
+
+            result = self._search_text(search_term)
+            if len(result) != 0:
+                search_result["value"] = True
+                search_result["results"][0]["Text_Results"] = result
+
+        if "tag" in search_type:
+
+            result = self._search_tag(search_term)
+            if len(result) != 0:
+                search_result["value"] = True
+                search_result["results"][1]["Tag_Results"] = result
+
+        if "subtag" in search_type:
+
+            result = self._search_subtag(search_term)
+            if len(result) != 0:
+                search_result["value"] = True
+                search_result["results"][2]["Subtag_Results"] = result
+
+        return search_result
