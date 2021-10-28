@@ -313,8 +313,8 @@ class document:
             temp_dict = {"tag_name": tag.tag_name, "subtag_list": []}
             for subtag in tag.subtags_list:
                 if (
-                    this_search_term == subtag.subtag_name
-                    or this_search_term == subtag.subtag_value
+                    this_search_term in subtag.subtag_name
+                    or this_search_term in subtag.subtag_value
                 ):
                     temp_dict["subtag_list"].append(tag.asdict)
 
