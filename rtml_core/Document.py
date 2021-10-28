@@ -316,7 +316,7 @@ class document:
                     this_search_term in subtag.subtag_name
                     or this_search_term in subtag.subtag_value
                 ):
-                    temp_dict["subtag_list"].append(tag.asdict)
+                    temp_dict["subtag_list"].append(subtag.asdict)
 
             if len(temp_dict["subtag_list"]) != 0:
                 results_list.append(temp_dict)

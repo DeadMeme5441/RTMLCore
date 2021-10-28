@@ -1,0 +1,24 @@
+<tag_name;tag_type=one;tag_type=two>
+Pellentesque dapibus suscipit ligula.
+Donec posuere augue in quam.  Etiam vel tortor sodales tellus ultricies commodo.
+Suspendisse potenti.  Aenean in sem ac leo mollis blandit.  Donec neque quam,
+dignissim in, mollis nec, sagittis eu, wisi.  Phasellus lacus.  Etiam laoreet
+quam sed arcu.  Phasellus at dui in ligula mollis ultricies.  Integer placerat
+tristique nisl.  Praesent augue.  Fusce commodo.  Vestibulum convallis, lorem a
+tempus semper, dui dui euismod elit, vitae placerat urna tortor vitae lacus.
+Nullam libero mauris, consequat quis, varius et, dictum id, arcu.  Mauris mollis
+tincidunt felis.  Aliquam feugiat tellus ut neque.
+Nulla facilisis, risus a rhoncus fermentum, tellus tellus lacinia purus, et dictum nunc justo sit amet elit.
+</tag_name;tag_type=one;tag_type=two>
+<fact;insect=bee>
+Bees should not be able to fly. This is a problem.
+</fact;insect=bee>
+<fact;animal=cow>
+Cow's farts contain the highest amount of methane in the animal kingdom.
+</fact;animal=cow>
+<fact;type=media;device=computer>
+Computers are now vital for existence.
+</fact;type=media;device=computer>
+<fact;type=media;device=phone>
+Mobile phones are now an extension of a person, and not just a tool.
+</fact;type=media;device=phone>
