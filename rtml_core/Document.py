@@ -310,7 +310,7 @@ class document:
         results_list = []
 
         for tag in self.tags_list:
-            temp_dict = {"tag_name": tag.tag_name, "subtag_list": []}
+            temp_dict = {"tag_name": tag.tag_name, "subtags_list": []}
             for subtag in tag.subtags_list:
                 if (
                     this_search_term in subtag.subtag_name
