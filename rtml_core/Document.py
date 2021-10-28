@@ -318,7 +318,7 @@ class document:
                 ):
                     temp_dict["subtags_list"].append(subtag.asdict)
 
-            if len(temp_dict["subtag_list"]) != 0:
+            if len(temp_dict["subtags_list"]) != 0:
                 results_list.append(temp_dict)
 
         return results_list
