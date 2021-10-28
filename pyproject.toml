@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "rtml_core"
-version = "0.1.1"
-description = ""
+version = "0.1.6"
+description = "Resource tagging markup language."
 authors = ["DeadUnderscoreMeme <deadunderscorememe@gmail.com>"]
 license = "MIT"
 
