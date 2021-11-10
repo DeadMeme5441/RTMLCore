@@ -52,8 +52,8 @@ class document:
     def opening_tags(self):
 
         opening_tags_list = []
-        if re.findall("(\<[^\/].*?>)", self.file_data):  # type: ignore
-            opening_tags_list = re.findall("(\<[^\/].*?\>)", self.file_data)  # type: ignore
+        if re.findall("(\<[^\/].*?>)", str(self.file_data)):  # type: ignore
+            opening_tags_list = re.findall("(\<[^\/].*?\>)", str(self.file_data))  # type: ignore
 
         all_opening_tags_obj_list = list(
             map(self._generate_tag_object, opening_tags_list)
@@ -85,8 +85,8 @@ class document:
     def closing_tags(self):
 
         closing_tags_list = []
-        if re.findall("(\<[\/].*?>)", self.file_data):  # type: ignore
-            closing_tags_list = re.findall("(\<[\/].*?\>)", self.file_data)  # type: ignore
+        if re.findall("(\<[\/].*?>)", str(self.file_data)):  # type: ignore
+            closing_tags_list = re.findall("(\<[\/].*?\>)", str(self.file_data))  # type: ignore
 
         all_closing_tags_obj_list = list(
             map(self._generate_tag_object, closing_tags_list)
@@ -324,6 +324,9 @@ class document:
         return results_list
 
     def search_document(self, search_type, search_term):
+
+        print(search_term)
+        print(type(search_term))
 
         search_result = {
             "search_type": search_type,
